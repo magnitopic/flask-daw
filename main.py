@@ -41,7 +41,7 @@ def listarDiscos():
 @app.route(f"/{ruta_admin}/borrar-disco/<int:id>")
 def borrarDisco(id):
     rt.borrarDisco(id)
-    return redirect("/listar-discos")
+    return redirect("/admin/listar-discos")
 
 
 if __name__ == "__main__":

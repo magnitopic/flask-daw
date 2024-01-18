@@ -6,7 +6,8 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<form action="guardar-disco-nuevo" method="post" style="display: flex; flex-direction: column; max-width: 500px; margin: 0 auto; gap: 1em; padding: 2em; background-color: lightblue; border: 1px solid black">
+		{% include 'menu.html' %}
+		<form action="/admin/guardar-disco-nuevo" method="post" style="display: flex; flex-direction: column; max-width: 500px; margin: 0 auto; gap: 1em; padding: 2em; background-color: lightblue; border: 1px solid black">
 			<label for="nombre">Nombre</label>
 			<input type="text" name="nombre" id="nombre" />
 			<label for="artista">Artista</label>
