@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Listado discos</title>
+	</head>
+	<body>
+
+		{% include 'menu.html' %}
+
+		<div>Listado de productos de la tienda</div>
+
+		{% for disco in discos %}
+		<div style="margin: 1em">
+			Nombre: {{ disco.nombre }} <br />
+			Artista: {{ disco.artista }} <br />
+			Precio: {{ disco.precio }} <br />
+		</div>
+		{% endfor %}
+	</body>
+</html>
