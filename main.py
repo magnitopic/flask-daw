@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import model.repositorio_tienda as rt
 
 app = Flask(__name__)
+
+ruta_admin = "/admin"
 
 
 @app.route("/")
@@ -9,12 +11,17 @@ def inicio():
     return render_template("index.html")
 
 
-@app.route("/registrar-disco", methods=["GET"])
+@app.route(f"/{ruta_admin}")
+def admin():
+    return render_template("index-admin.html")
+
+
+@app.route(f"/{ruta_admin}/registrar-disco", methods=["GET"])
 def registrarDisco():
     return render_template("registrar-disco.html")
 
 
-@app.route("/guardar-disco-nuevo", methods=["POST"])
+@app.route(f"/{ruta_admin}/guardar-disco-nuevo", methods=["POST"])
 def registrarDiscoPost():
     nombre = request.form["nombre"]
     artista = request.form["artista"]
@@ -25,10 +32,17 @@ def registrarDiscoPost():
     return render_template("registrar-disco_ok.html")
 
 
-@app.route("/listar-discos")
+@app.route(f"/{ruta_admin}/listar-discos")
 def listarDiscos():
     discos = rt.obtenerDiscos()
-    return render_template("listado-discos.html", discos = discos)
+    return render_template("listado-discos.html", discos=discos)
+
+
+@app.route(f"/{ruta_admin}/borrar-disco/<int:id>")
+def borrarDisco(id):
+    rt.borrarDisco(id)
+    return redirect("/listar-discos")
+
 
 if __name__ == "__main__":
     print("WebServer is running ✅")

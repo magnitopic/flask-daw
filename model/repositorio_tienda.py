@@ -22,3 +22,14 @@ def obtenerDiscos():
     cur.close()
     conexion.close()
     return discos
+
+
+def borrarDisco(id):
+    conexion = db.conectar()
+    sql = "delete from discos where id = %s"
+    cur = conexion.cursor()
+    cur.execute(sql, (id,))
+    conexion.commit()
+    cur.close()
+    conexion.close()
+    print("Disco borrado ❌💿")

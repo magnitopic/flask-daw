@@ -6,7 +6,6 @@
 		<title>Listado discos</title>
 	</head>
 	<body>
-
 		{% include 'menu.html' %}
 
 		<div>Listado de productos de la tienda</div>
@@ -16,6 +15,7 @@
 			Nombre: {{ disco.nombre }} <br />
 			Artista: {{ disco.artista }} <br />
 			Precio: {{ disco.precio }} <br />
+			<a href="borrar-disco/{{ disco.id }}">Borrar disco</a>
 		</div>
 		{% endfor %}
 	</body>

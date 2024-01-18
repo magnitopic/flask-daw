@@ -3,11 +3,12 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>Flask page</title>
 	</head>
 	<body>
-		<h2>Parte publica de la tienda</h2>
+		{% include 'menu.html' %}
 
-		<a href="admin/">acceder a la administración</a>
+		<h1>Web de discos</h1>
+		<a href="/registrar-disco">Registrar disco</a>
 	</body>
 </html>
