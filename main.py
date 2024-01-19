@@ -47,6 +47,8 @@ def listarDiscos():
 @app.route(f"/{ruta_admin}/borrar-disco/<int:id>")
 def borrarDisco(id):
     rt.borrarDisco(id)
+    ruta_imgen = os.path.join(os.path.dirname(__file__), f"static/img/{id}.jpg")
+    os.remove(ruta_imgen)
     return redirect("/admin/listar-discos")
 
 
