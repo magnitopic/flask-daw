@@ -21,7 +21,18 @@
 			<label for="fecha">fecha</label>
 			<input type="date" name="fecha" id="fecha" required/>
 			<label for="foto">Portada</label>
-			<input type="file" name="foto" id="foto" required/>
+			<input type="file" name="foto" id="foto" accept=".jpg, .jpeg, .png" required/>
+			<script>
+				document.getElementById('foto').addEventListener('change', function() {
+					const file = this.files[0];
+					const maxSize = 1048576;	// 1MB in bytes
+
+					if (file.size > maxSize) {
+						alert('File size exceeds the limit of 5MB. Please choose a smaller file.');
+						this.value = '';	// Clear the selected file
+					}
+				});
+			</script>
 			<input type="submit" value="Guardar" />
 		</form>
 	</body>

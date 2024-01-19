@@ -33,7 +33,7 @@ def registrarDiscoPost():
     foto = request.files["foto"]
     registry_id = rt.registrarDisco(nombre, artista, genero, precio, discografica, fecha)
     ruta_actual = os.path.dirname(__file__)
-    ruta_imagen = os.path.join(ruta_actual, f"static/img/{registry_id}.jpg")
+    ruta_imagen = os.path.join(ruta_actual, f"static/img/{registry_id}")
     foto.save(ruta_imagen)
     return render_template("registrar-disco_ok.html")
 
@@ -47,7 +47,7 @@ def listarDiscos():
 @app.route(f"/{ruta_admin}/borrar-disco/<int:id>")
 def borrarDisco(id):
     rt.borrarDisco(id)
-    ruta_imgen = os.path.join(os.path.dirname(__file__), f"static/img/{id}.jpg")
+    ruta_imgen = os.path.join(os.path.dirname(__file__), f"static/img/{id}")
     os.remove(ruta_imgen)
     return redirect("/admin/listar-discos")
 
