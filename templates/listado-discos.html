@@ -12,10 +12,14 @@
 
 		{% for disco in discos %}
 		<div style="margin: 1em">
+			<img width="80px" src="/static/img/{{disco.id}}.jpg" alt="" /><br />
 			Nombre: {{ disco.nombre }} <br />
 			Artista: {{ disco.artista }} <br />
 			Precio: {{ disco.precio }} <br />
-			<a href="/admin/borrar-disco/{{ disco.id }}">Borrar disco</a>
+			<a
+				onclick="return confirm('¿Está seguro que quiere eliminar el registro?')"
+				href="/admin/borrar-disco/{{ disco.id }}"
+			>Borrar disco</a>
 		</div>
 		{% endfor %}
 	</body>

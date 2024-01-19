@@ -7,19 +7,21 @@
 	</head>
 	<body>
 		{% include 'menu.html' %}
-		<form action="/admin/guardar-disco-nuevo" method="post" style="display: flex; flex-direction: column; max-width: 500px; margin: 0 auto; gap: 1em; padding: 2em; background-color: lightblue; border: 1px solid black">
+		<form action="/admin/guardar-disco-nuevo" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; max-width: 500px; margin: 0 auto; gap: 1em; padding: 2em; background-color: lightblue; border: 1px solid black">
 			<label for="nombre">Nombre</label>
-			<input type="text" name="nombre" id="nombre" />
+			<input type="text" name="nombre" id="nombre" required/>
 			<label for="artista">Artista</label>
-			<input type="text" name="artista" id="artista" />
+			<input type="text" name="artista" id="artista" required/>
 			<label for="genero">Genero</label>
-			<input type="text" name="genero" id="genero" />
+			<input type="text" name="genero" id="genero" required/>
 			<label for="precio">Precio</label>
-			<input type="number" name="precio" id="precio" />
+			<input type="number" name="precio" id="precio" required/>
+			<label for="discografica">Discográfica</label>
+			<input type="text" name="discografica" id="discografica" required/>
 			<label for="fecha">fecha</label>
-			<input type="date" name="fecha" id="fecha" />
-			<!-- <label for="portada">Portada</label>
-			<input type="file" name="portada" id="portada" /> -->
+			<input type="date" name="fecha" id="fecha" required/>
+			<label for="foto">Portada</label>
+			<input type="file" name="foto" id="foto" required/>
 			<input type="submit" value="Guardar" />
 		</form>
 	</body>

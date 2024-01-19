@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
+import os
 import model.repositorio_tienda as rt
 
 app = Flask(__name__)
@@ -27,8 +28,13 @@ def registrarDiscoPost():
     artista = request.form["artista"]
     genero = request.form["genero"]
     precio = request.form["precio"]
+    discografica = request.form["discografica"]
     fecha = request.form["fecha"]
-    rt.registrarDisco(nombre, artista, genero, precio, fecha)
+    foto = request.files["foto"]
+    registry_id = rt.registrarDisco(nombre, artista, genero, precio, discografica, fecha)
+    ruta_actual = os.path.dirname(__file__)
+    ruta_imagen = os.path.join(ruta_actual, f"static/img/{registry_id}.jpg")
+    foto.save(ruta_imagen)
     return render_template("registrar-disco_ok.html")
 
 

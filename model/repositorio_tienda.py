@@ -11,6 +11,7 @@ def registrarDisco(nombre, artista, genero, precio, discografica, fecha):
     conn.close()
     cursor.close()
     print("Nuevo disco registrado ➕💿")
+    return cursor.lastrowid
 
 
 def obtenerDiscos():
