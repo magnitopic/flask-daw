@@ -1,0 +1,23 @@
+<p>Listado de discos:</p>
+
+
+<div  id="container">
+  <div *ngFor="let d of discos">
+    <div class="card">
+      <img src="/server/imagenes/{{ d.id }}.jpg" alt="albumCover" />
+      <img src="/server/imagenes/disk.webp" alt="disk" class="card-disk" />
+      <div class="card-info">
+        <p class="card-title">{{ d.nombre }}</p>
+        <div class="card-album">
+          <p>{{ d.artista }}</p>
+          <p>•</p>
+          <p>{{ d.genero }}</p>
+        </div>
+        <div class="card-bottom">
+          <p class="card-price">{{ d.precio }} €</p>
+          <input type="button" class="enlace_comprar_listado_principal" (click)="verDetalles(d)" value="Ver detalles">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

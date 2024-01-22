@@ -1,0 +1,76 @@
+<div>
+  Rellena los datos de tú pedido:
+  <br />
+  <div id="pasos_container">
+    <span>Nombre completo:</span>
+    <input
+      class="pasos_input"
+      type="text"
+      [(ngModel)]="pedido.nombre"
+      [ngModelOptions]="{ standalone: true }"
+    />
+  </div>
+
+  <div id="pasos_container">
+    <span>Correo electrónico:</span>
+    <input
+      class="pasos_input"
+      type="text"
+      [(ngModel)]="pedido.email"
+      [ngModelOptions]="{ standalone: true }"
+    />
+  </div>
+
+  <div id="pasos_container">
+    <span>Teléfono:</span>
+    <input
+      class="pasos_input"
+      type="text"
+      [(ngModel)]="pedido.telefono"
+      [ngModelOptions]="{ standalone: true }"
+    />
+  </div>
+
+  <div id="pasos_container">
+    <span>Dirección completa de envio:</span>
+    <input
+      class="pasos_input"
+      type="text"
+      [(ngModel)]="pedido.direccion"
+      [ngModelOptions]="{ standalone: true }"
+    />
+  </div>
+  
+  <div id="pasos_container">
+    <span>Numero de tarjeta de credito: </span>
+    <p>No insertar datos reales</p>
+    <input
+      class="pasos_input"
+      type="number"
+      [(ngModel)]="pedido.tarjeta"
+      [ngModelOptions]="{ standalone: true }"
+    />
+  </div>
+
+  <div id="pasos_container">
+    <span>Caducidad de la tarjeta:</span
+    ><input
+      class="pasos_input"
+      type="text"
+      [(ngModel)]="pedido.caducidad"
+      [ngModelOptions]="{ standalone: true }"
+    />
+  </div>
+
+  <div id="pasos_container">
+    <span>CVV:</span
+    ><input
+      class="pasos_input"
+      type="number"
+      [(ngModel)]="pedido.cvv"
+      [ngModelOptions]="{ standalone: true }"
+    />
+  </div>
+
+  <button class="pasos-button" (click)="finalizarPedido()">Finalizar Pedido</button>
+</div>

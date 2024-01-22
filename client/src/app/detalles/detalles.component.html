@@ -1,0 +1,25 @@
+<div id="details-main">
+  <div id="details-header">
+    <img src="server/imagenes/{{ disco.id }}.jpg" alt="" />
+    <div>
+      <h1>{{ disco.nombre }}</h1>
+      <h2>{{ disco.artista }}</h2>
+    </div>
+  </div>
+  <div id="buffer"></div>
+  <div id="details-body">
+    <div>
+      <p>Año:</p>
+      <p>{{ disco.fecha }}</p>
+    </div>
+    <div>
+      <p>Genero:</p>
+      <p>{{ disco.genero }}</p>
+    </div>
+    <div>
+      <p>Precio:</p>
+      <p id="details-price">{{ disco.precio }} €</p>
+    </div>
+    <input type="button" class="details-comprar" (click)="agregar_producto_al_carrito()" value="Añadir al carrito">
+  </div>
+</div>

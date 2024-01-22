@@ -24,6 +24,26 @@ def obtenerDiscos():
     conexion.close()
     return discos
 
+def obtenerDiscoPorId(id):
+    conexion = db.conectar()
+    sql = "select * from discos where id = %s"
+    cur = conexion.cursor(dictionary=True)
+    cur.execute(sql, (id,))
+    disco = cur.fetchone()
+    cur.close()
+    conexion.close()
+    return disco
+
+def obtenerDiscosCarrito():
+    conexion = db.conectar()
+    sql = "select * from discos where id in (select id_producto from productopedido)"
+    cur = conexion.cursor(dictionary=True)
+    cur.execute(sql)
+    discos = cur.fetchall()
+    cur.close()
+    conexion.close()
+    return discos
+
 
 def borrarDisco(id):
     conexion = db.conectar()

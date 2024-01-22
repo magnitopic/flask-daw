@@ -1,0 +1,22 @@
+<p>Listado de los productos en el carrito:</p>
+
+<div class="shop" *ngFor="let producto of discosCarrito">
+  <div class="shop-top">
+    <span class="shop-name">{{ producto.disco?.nombre }}</span>
+    <span>•</span>
+    <span class="shop-artist">{{ producto.disco?.artista }}</span>
+  </div>
+  <div class="shop-data">
+    <img src="img/AM.jpg" alt="albumCover" class="shop-img" />
+    
+    <div>
+      <div class="shop-data">
+        <p class="shop-title">Cantidad:</p>
+        <input type="number" value="{{ producto.cantidad }}" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<button (click)="vaciarCarrito()">Vaciar carrito</button>
+<button (click)="realizarPedido()">Realizar Pedido</button>
