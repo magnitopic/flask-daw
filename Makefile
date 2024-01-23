@@ -7,12 +7,9 @@ RESET			=	\033[0m
 
 build:
 	cd client && ng build
-	mkdir -p templates
-    mv -p client/dist/client/browser/index.html templates
-    mkdir -p static/js
-    mv -p client/dist/client/browser/*.js static/js
-    mkdir -p static/css
-    mv -p client/dist/client/browser/*.css static/css
-    mkdir -p static/img
-    mv -p client/dist/client/browser/*.ico static/img
+	mkdir -p static/js static/css static/img
+	mv client/dist/client/browser/index.html templates
+	mv client/dist/client/browser/*.js static/js
+	mv client/dist/client/browser/*.css static/css
+	mv client/dist/client/browser/*.ico static/img
 	@printf "$(BLUE)==> $(CYAN)Client build complete ✅\n\n$(RESET)"
