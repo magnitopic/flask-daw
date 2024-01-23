@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request, session
-from __main__ import app
+from main import app
 import model.repositorio_tienda as rt
 
 ruta_webservices = "/web-services/"

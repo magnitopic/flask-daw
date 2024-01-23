@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import model.repositorio_tienda as rt
-from __main__ import app
+from main import app
 
 
 ruta_admin = "/admin"
