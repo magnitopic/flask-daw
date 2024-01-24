@@ -36,15 +36,28 @@ def obtenerDiscoPorId(id):
     return disco
 
 
-def obtenerDiscosCarrito():
-    conexion = db.conectar()
-    sql = "select * from discos where id in (select id_producto from productopedido)"
-    cur = conexion.cursor(dictionary=True)
+def obtenerDiscosCarrito(productos_sesion):
+    ids_sql = []
+    productos_sesion = sorted(productos_sesion, key=lambda p: p["id_producto"])
+    for p in productos_sesion:
+        if isinstance(p["id_producto"], int):
+            ids_sql.append(str(p["id_producto"]))
+    ids_sql_consulta = ",".join(ids_sql)
+    sql = "select * from discos where id in (" + \
+        ids_sql_consulta + ") order by id asc"
+    conexion = conexion.cursor(dictionary=True)
     cur.execute(sql)
-    discos = cur.fetchall()
+    discos_en_carrito = cur.fetchall()
+
+    resp = []
+    for i, ps in enumerate(productos_sesion):
+        resp.append({
+            "disco": discos_en_carrito[i],
+            "cantidad": productos_session[i]["cantidad_producto"]
+        })
     cur.close()
     conexion.close()
-    return discos
+    return resp
 
 
 def registrarPedido(nombre, email, direccion, tarjeta,
@@ -63,6 +76,21 @@ def registrarPedido(nombre, email, direccion, tarjeta,
     conexion.commit()
     cur.close()
     conexion.close()
+
+
+def obtenerPedidos():
+    conexion = db.conectar()
+    sql = """select p.id, p.nombre, p.email, p.direccion, p.tarjeta, p.telefono, p.caducidad, p.cvv, 
+    pp.id_producto, pp.cantidad_producto 
+    from pedidos p, productopedido pp, discos d
+    where p.id = pp.id and d.id = pp.id_producto
+    order by p.id desc"""
+    cur = conexion.cursor(dictionary=True)
+    cur.execute(sql)
+    pedidos_completo = cur.fetchall()
+    cur.close()
+    conexion.close()
+    return pedidos_completo
 
 
 def borrarDisco(id):

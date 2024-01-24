@@ -5,6 +5,10 @@ import model.repositorio_tienda as rt
 ruta_webservices = "/web-services/"
 
 
+@app.route(ruta_webservices)
+def web_services():
+    return "Servicio activo 🌐"
+
 @app.route(f"{ruta_webservices}/obtener-discos")
 def ws_obtenerDiscos():
     discos = rt.obtenerDiscos()
@@ -17,20 +21,25 @@ def obtenerDiscoPorId(id):
     return jsonify(disco)
 
 
-# TODO: finish this
 @app.route(f"{ruta_webservices}/agregarProductoCarrito", methods=["POST"])
 def agregarProductoCarrito():
     id = request.get_json()["id"]
     cantidad = request.get_json()["cantidad"]
-    if "carrito" not in session:
-        session["carrito"] = []
-    session["carrito"].append({"id": id, "cantidad": cantidad})
+    if "productos" not in session:
+        session["productos"] = []
+
+    productos = session["productos"]
+    encontrado = False
+    for p in productos:
+        if p["id_producto"] == id:
+            encontrado = True
+            p["cantidad_producto"] += cantidad
+
+    if not encontrado:
+        productos.append({"id_producto": id, "cantidad_producto": cantidad})
+    session["productos"] = productos
+
     return jsonify(["ok"])
-
-
-@app.route(f"{ruta_webservices}/obtener-info-sesion")
-def obtenerInfoSesion():
-    return jsonify(session)
 
 
 @app.route(f"{ruta_webservices}/obtenerDiscosCarrito")
@@ -45,7 +54,7 @@ def vaciarCarrito():
     return jsonify(["ok"])
 
 
-@app.route(f"{ruta_webservices}/registrarPedido")
+@app.route(f"{ruta_webservices}/registrarPedido", methods=["POST"])
 def registrarPedido():
     nombre = request.get_json()["nombre"]
     email = request.get_json()["email"]
@@ -57,4 +66,5 @@ def registrarPedido():
     # Aquí se debería validar los datos de nuevo
     rt.registrarPedido(nombre, email, direccion, tarjeta,
                        telefono, caducidad, cvv, session["productos"])
+    session.clear()
     return jsonify(["ok"])
