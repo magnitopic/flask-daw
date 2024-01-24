@@ -35,16 +35,26 @@ def obtenerInfoSesion():
 
 @app.route(f"{ruta_webservices}/obtenerDiscosCarrito")
 def obtenerDiscosCarrito():
-
-    return
+    returnValue = rt.obtenerDiscosCarrito(session["productos"])
+    return jsonify(returnValue)
 
 
 @app.route(f"{ruta_webservices}/vaciarCarrito")
 def vaciarCarrito():
-
-    return
+    session.clear()
+    return jsonify(["ok"])
 
 
 @app.route(f"{ruta_webservices}/registrarPedido")
 def registrarPedido():
-    return
+    nombre = request.get_json()["nombre"]
+    email = request.get_json()["email"]
+    direccion = request.get_json()["direccion"]
+    tarjeta = request.get_json()["tarjeta"]
+    telefono = request.get_json()["telefono"]
+    caducidad = request.get_json()["caducidad"]
+    cvv = request.get_json()["cvv"]
+    # Aquí se debería validar los datos de nuevo
+    rt.registrarPedido(nombre, email, direccion, tarjeta,
+                       telefono, caducidad, cvv, session["productos"])
+    return jsonify(["ok"])
