@@ -15,7 +15,7 @@ def ws_obtenerDiscos():
     return jsonify(discos)
 
 
-@app.route(f"{ruta_webservices}/obtenerDiscoPorId")
+@app.route(f"{ruta_webservices}/obtenerDiscoPorId/<int:id>")
 def obtenerDiscoPorId(id):
     disco = rt.obtenerDiscoPorId(id)
     return jsonify(disco)
