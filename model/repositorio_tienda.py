@@ -38,23 +38,23 @@ def obtenerDiscoPorId(id):
 
 def obtenerDiscosCarrito(productos_sesion):
     ids_sql = []
-    productos_sesion = sorted(productos_sesion, key=lambda p: p["id_producto"])
+    productos_sesion = sorted(
+        productos_sesion, key=lambda p: p["id_producto"])
     for p in productos_sesion:
         if isinstance(p["id_producto"], int):
             ids_sql.append(str(p["id_producto"]))
     ids_sql_consulta = ",".join(ids_sql)
-    sql = "select * from discos where id in (" + \
-        ids_sql_consulta + ") order by id asc"
-    conexion = conexion.cursor(dictionary=True)
+    sql = f"select * from discos where id in ( {
+        ids_sql_consulta} ) order by id asc"
+    conexion = db.conectar()
+    cur = conexion.cursor(dictionary=True)
     cur.execute(sql)
-    discos_en_carrito = cur.fetchall()
+    discos = cur.fetchall()
 
     resp = []
     for i, ps in enumerate(productos_sesion):
-        resp.append({
-            "disco": discos_en_carrito[i],
-            "cantidad": productos_session[i]["cantidad_producto"]
-        })
+        resp.append(
+            {"disco": discos[i], "cantidad": productos_sesion[i]["cantidad_producto"]})
     cur.close()
     conexion.close()
     return resp
