@@ -44,8 +44,7 @@ def obtenerDiscosCarrito(productos_sesion):
         if isinstance(p["id_producto"], int):
             ids_sql.append(str(p["id_producto"]))
     ids_sql_consulta = ",".join(ids_sql)
-    sql = f"select * from discos where id in ( {
-        ids_sql_consulta} ) order by id asc"
+    sql = f"select * from discos where id in ( {ids_sql_consulta} ) order by id asc"
     conexion = db.conectar()
     cur = conexion.cursor(dictionary=True)
     cur.execute(sql)
