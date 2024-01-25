@@ -4,8 +4,8 @@
 <div  id="container">
   <div *ngFor="let d of discos">
     <div class="card">
-      <img src="/server/imagenes/{{ d.id }}.jpg" alt="albumCover" />
-      <img src="/server/imagenes/disk.webp" alt="disk" class="card-disk" />
+      <img src="/static/img/{{ d.id }}.jpg" alt="albumCover" />
+      <img src="/static/img/disk.webp" alt="disk" class="card-disk" />
       <div class="card-info">
         <p class="card-title">{{ d.nombre }}</p>
         <div class="card-album">
