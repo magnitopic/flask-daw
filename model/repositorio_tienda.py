@@ -81,7 +81,8 @@ def registrarPedido(nombre, email, direccion, tarjeta,
 def obtenerPedidos():
     conexion = db.conectar()
     sql = """select p.id, p.nombre, p.email, p.direccion, p.tarjeta, p.telefono, p.caducidad, p.cvv, 
-    pp.id_producto, pp.cantidad_producto 
+    pp.id_producto, pp.cantidad_producto,
+    d.nombre as nombre_disco, d.artista, d.genero, d.precio, d.discografica, d.fecha
     from pedidos p, productopedido pp, discos d
     where p.id = pp.id and d.id = pp.id_producto
     order by p.id desc"""

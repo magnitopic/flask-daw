@@ -42,7 +42,7 @@ def listarDiscos():
 @app.route(f"/{ruta_admin}/listar-pedidos")
 def listarPedidos():
     pedidos = rt.obtenerPedidos()
-    return render_template("listado-pedidos.html", pedidos=pedidos)
+    return render_template("listar-pedidos.html", pedidos=pedidos)
 
 
 @app.route(f"/{ruta_admin}/borrar-disco/<int:id>")

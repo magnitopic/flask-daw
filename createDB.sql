@@ -25,7 +25,6 @@ CREATE TABLE pedidos (
 	ip VARCHAR(255),
 	user_agent VARCHAR(1200)
 );
-
 CREATE TABLE productopedido (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	id_producto INT,
