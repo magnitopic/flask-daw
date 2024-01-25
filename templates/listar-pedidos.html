@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lista de pedidos</title>
+	</head>
+	<body>
+		{% include 'menu.html' %}
+
+		<div>Listado de pedidos de la tienda</div>
+
+		{% for pedido in pedidos %}
+		<div style="margin: 1em">
+			{% if pedido.nombre != "" %}
+			<div style="margin: 1em; background-color: aqua">
+				- Datos de envío - <br />
+				Nombre: {{ pedido.nombre }} <br />
+				Dirección: {{ pedido.direccion }} <br />
+				Tarjeta: {{ pedido.tarjeta }} <br />
+			</div>
+			{% endif %}
+
+			<div style="margin: 1em; background-color: burlywood">
+				- Producto - <br />
+				Título: {{ pedido.titulo }} Precio: {{ pedido.precio }} <br />
+				Descripción: {{ pedido.descripcion }} Cantidad: {{
+				pedido.cantidad }}
+			</div>
+		</div>
+		{% endfor %}
+	</body>
+</html>

@@ -66,8 +66,11 @@ def registrarPedido():
     telefono = request.get_json()["telefono"]
     caducidad = request.get_json()["caducidad"]
     cvv = request.get_json()["cvv"]
+
+    ip = request.remote_addr
+    user_agent = request.headers.get("User-Agent")
     # Aquí se debería validar los datos de nuevo
-    rt.registrarPedido(nombre, email, direccion, tarjeta,
-                       telefono, caducidad, cvv, session["productos"])
+    rt.regi strarPedido(nombre, email, direccion, tarjeta,
+                       telefono, caducidad, cvv, session["productos"], ip, user_agent)
     session.clear()
     return jsonify(["ok"])

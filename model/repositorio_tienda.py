@@ -44,7 +44,8 @@ def obtenerDiscosCarrito(productos_sesion):
         if isinstance(p["id_producto"], int):
             ids_sql.append(str(p["id_producto"]))
     ids_sql_consulta = ",".join(ids_sql)
-    sql = f"select * from discos where id in ( {ids_sql_consulta} ) order by id asc"
+    sql = "select * from discos where id in ( " + \
+        ids_sql_consulta + " ) order by id asc"
     conexion = db.conectar()
     cur = conexion.cursor(dictionary=True)
     cur.execute(sql)
@@ -60,12 +61,12 @@ def obtenerDiscosCarrito(productos_sesion):
 
 
 def registrarPedido(nombre, email, direccion, tarjeta,
-                    telefono, caducidad, cvv, productos_session):
+                    telefono, caducidad, cvv, productos_session, ip, user_agent):
     conexion = db.conectar()
-    sql = "insert into pedidos (nombre, email, direccion, tarjeta, telefono, caducidad, cvv) values (%s, %s, %s, %s, %s, %s, %s)"
+    sql = "insert into pedidos (nombre, email, direccion, tarjeta, telefono, caducidad, cvv, ip, user_agent) values (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
     cur = conexion.cursor()
     cur.execute(sql, (nombre, email, direccion, tarjeta,
-                      telefono, caducidad, cvv))
+                      telefono, caducidad, cvv, ip, user_agent))
     id_pedido = cur.lastrowid
     for ps in productos_session:
         id_producto = ps["id_producto"]
