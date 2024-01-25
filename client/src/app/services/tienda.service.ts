@@ -21,9 +21,8 @@ export class TiendaService {
   }
 
   obtenerDiscoPorId(id_disco: number): Observable<Disco> {
-    console.log('Obteniendo disco con id ' + id_disco);
     return this.http.get<Disco>(
-      this.ruta_webservices + 'obtenerDiscoPorId?id=' + id_disco
+      this.ruta_webservices + 'obtenerDiscoPorId/' + id_disco
     );
   }
 
