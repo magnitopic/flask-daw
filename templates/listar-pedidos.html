@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Lista de pedidos</title>
+		<link rel="stylesheet" href="static/css/listar-pedidos.css" />
 	</head>
 	<body>
 		{% include 'menu.html' %}
@@ -13,19 +14,38 @@
 		{% for pedido in pedidos %}
 		<div style="margin: 1em">
 			{% if pedido.nombre != "" %}
-			<div style="margin: 1em; background-color: aqua">
-				- Datos de envío - <br />
-				Nombre: {{ pedido.nombre }} <br />
-				Dirección: {{ pedido.direccion }} <br />
-				Tarjeta: {{ pedido.tarjeta }} <br />
+			<hr />
+			<div style="margin: 10px">
+				<p>Nombre destinatario:</p>
+				{{ pedido.nombre }}<br />
+				<p>Email:</p>
+				{{ pedido.email }}<br />
+				<p>Teléfono:</p>
+				{{ pedido.telefono }}<br />
+				<p>Dirección de envío:</p>
+				{{ pedido.direccion }}<br />
+				<p>Numero de tarjeta:</p>
+				{{ pedido.tarjeta }}<br />
+				<p>Caducidad de la tarjeta:</p>
+				{{ pedido.caducidad }}<br />
+				<p>CVV:</p>
+				{{ pedido.cvv }}<br />
 			</div>
 			{% endif %}
-
-			<div style="margin: 1em; background-color: burlywood">
-				- Producto - <br />
-				Título: {{ pedido.nombre_disco }} Precio: {{ pedido.precio }} <br />
-				Descripción: {{ pedido.discografica }} Cantidad: {{
-				pedido.cantidad_producto }}
+			<div class="card">
+				<img src="static/img/{{ pedido.id_disco }}" alt="albumCover" />
+				<img src="static/img/disk.webp" alt="disk" class="card-disk" />
+				<div class="card-info">
+					<p class="card-title">{{ pedido.nombre_disco }}</p>
+					<div class="card-album">
+						<p>{{ pedido.artista }}</p>
+						<p>•</p>
+						<p>{{ pedido.genero }}</p>
+					</div>
+					<div class="card-bottom">
+						<p class="card-price">{{ pedido.precio }} €</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		{% endfor %}

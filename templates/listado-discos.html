@@ -4,24 +4,42 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Listado discos</title>
+		<link rel="stylesheet" href="static/css/listado-discos.css" />
 	</head>
 	<body>
 		{% include 'menu.html' %}
 
 		<div>Listado de productos de la tienda</div>
 
-		{% for disco in discos %}
-		<div style="margin: 1em">
-			<img width="80px" src="/static/img/{{disco.id}}" alt="" /><br />
-			Nombre: {{ disco.nombre }} <br />
-			Artista: {{ disco.artista }} <br />
-			Precio: {{ disco.precio }} <br />
-			<a
-				onclick="return confirm('¿Está seguro que quiere eliminar el registro?')"
-				href="/admin/borrar-disco/{{ disco.id }}"
-				>Borrar disco</a
-			>
+		<div style="display: flex; flex-align: row; flex-wrap: wrap">
+			{% for disco in discos %}
+			<div style="margin: 1em">
+				<div class="card">
+					<img src="/static/img/{{disco.id}}" alt="albumCover" />
+					<img
+						src="static/img/disk.webp"
+						alt="disk"
+						class="card-disk"
+					/>
+					<div class="card-info">
+						<p class="card-title">{{ disco.nombre }}</p>
+						<div class="card-album">
+							<p>{{ disco.artista }}</p>
+							<p>•</p>
+							<p>{{ disco.genero }}</p>
+						</div>
+						<div class="card-bottom">
+							<p class="card-price">{{ disco.precio }} €</p>
+						</div>
+					</div>
+				</div>
+				<a
+					onclick="return confirm('¿Está seguro que quiere eliminar el registro?')"
+					href="/admin/borrar-disco/{{ disco.id }}"
+					>Borrar disco</a
+				>
+			</div>
+			{% endfor %}
 		</div>
-		{% endfor %}
 	</body>
 </html>
