@@ -6,7 +6,7 @@ def registrarDisco(nombre, artista, genero, precio, discografica, fecha):
     sql = "INSERT INTO discos (nombre, artista, genero, precio, discografica, fecha) VALUES (%s, %s, %s, %s, %s, %s)"
     val = (nombre, artista, genero, precio, discografica, fecha)
     cursor = conn.cursor()
-    cursor.execute(sql, (val,))
+    cursor.execute(sql, val,)
     conn.commit()
     conn.close()
     cursor.close()
