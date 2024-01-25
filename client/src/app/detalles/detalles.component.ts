@@ -23,6 +23,7 @@ export class DetallesComponent {
     this.id_disco = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.servicioTienda.obtenerDiscoPorId(this.id_disco).subscribe((disco) => {
       this.disco = disco;
+      this.disco.fecha = this.disco.fecha?.replace('00:00:00 GMT', '');
     });
   }
 

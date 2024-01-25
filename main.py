@@ -3,6 +3,7 @@ import os
 import model.repositorio_tienda as rt
 
 app = Flask(__name__)
+app.secret_key = "abcd"
 
 import webservices
 import admin
