@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import model.repositorio_tienda as rt
+import os
 from main import app
 
 
