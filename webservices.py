@@ -38,7 +38,10 @@ def agregarProductoCarrito():
     if not encontrado:
         productos.append({"id_producto": id, "cantidad_producto": cantidad})
     session["productos"] = productos
+    print(session)
 
+    print("session:")
+    print(session)
     return jsonify(["ok"])
 
 
