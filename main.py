@@ -1,5 +1,3 @@
-import admin
-import webservices
 from flask import Flask, render_template, request, redirect, url_for
 import os
 import model.repositorio_tienda as rt
@@ -10,6 +8,8 @@ app.secret_key = "abcd"
 """ SESSION_TYPE = 'redis'
 Session(app) """
 
+import webservices
+import admin
 
 @app.route("/")
 def inicio():
