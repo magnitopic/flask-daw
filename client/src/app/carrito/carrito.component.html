@@ -7,8 +7,12 @@
     <span class="shop-artist">{{ producto.disco?.artista }}</span>
   </div>
   <div class="shop-data">
-    <img src="/static/img/{{ producto.disco?.id }}" alt="albumCover" class="shop-img" />
-    
+    <img
+      src="/static/img/{{ producto.disco?.id }}"
+      alt="albumCover"
+      class="shop-img"
+    />
+
     <div>
       <div class="shop-data">
         <p class="shop-title">Cantidad:</p>
@@ -16,6 +20,10 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="shop" *ngIf="discosCarrito.length > 0">
+  <h3>No hay productos añadidos al carrito</h3>
 </div>
 
 <button (click)="vaciarCarrito()">Vaciar carrito</button>

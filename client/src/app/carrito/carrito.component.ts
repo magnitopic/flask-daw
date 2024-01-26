@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { TiendaService } from '../services/tienda.service';
 import { DiscoCarrito } from '../model/discoCarrito';
 import { NgFor } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrito',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, NgIf],
   templateUrl: './carrito.component.html',
   styleUrl: './carrito.component.css',
 })
