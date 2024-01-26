@@ -7,8 +7,7 @@ ruta_webservices = "/web-services/"
 
 @app.route(ruta_webservices)
 def web_services():
-    return "Servicio activo 🌐
-"
+    return "Servicio activo 🌐"
 
 @app.route(f"{ruta_webservices}/obtener-discos")
 def ws_obtenerDiscos():
