@@ -39,6 +39,7 @@ def listarDiscos():
     discos = rt.obtenerDiscos()
     return render_template("listado-discos.html", discos=discos)
 
+
 @app.route(f"/{ruta_admin}/listar-pedidos")
 def listarPedidos():
     pedidos = rt.obtenerPedidos()

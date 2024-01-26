@@ -13,5 +13,4 @@ build:
 	@mv client/dist/client/browser/index.html templates
 	@mv client/dist/client/browser/*.js static/js/
 	@mv client/dist/client/browser/*.css static/css/
-	@mv client/dist/client/browser/*.ico static/img/
 	@printf "$(BLUE)==> $(CYAN)Client build complete ✅\n\n$(RESET)"
